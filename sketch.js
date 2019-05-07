@@ -3,9 +3,29 @@ var birds = [];
 let score = 0;
 let highScore = 0;
 
+let movementSpeed = -2;
+
+var backgroundImage;
+var ground;
+
+let groundHeight = 80;
+
+let birdSpawn = 0;
+
+var game_over;
+let game_over_width = 425;
+let game_over_height = 50;
+
+function preload()
+{
+	game_over = loadImage("assets/game_over.png");
+}
+
 function setup()
 {
-	createCanvas(400, 600);
+	createCanvas(480, 640);
+	backgroundImage = loadImage("assets/background.png");
+	ground = new Ground();
 
 	pipe = new Pipe();
 }
@@ -13,12 +33,29 @@ function setup()
 function draw()
 {
 	background(0);
+	image(backgroundImage, 0, 0);
+
+	fill(255);
+	textSize(62);
+	textStyle(BOLD);
+	textAlign(CENTER);
+	text(score, width / 2, 100);
+	textStyle(NORMAL);
+	textSize(16);
+	text(highScore, width / 2, 130);
+
+	ground.update();
+	ground.show();
 
 	pipe.show();
 	pipe.update();
 
-	if (frameCount % 150 == 0)
+	if (birdSpawn <= 0)
+	{
 		birds.push(new Bird());
+		birdSpawn = random(100, 200);
+	}
+	birdSpawn--;
 
 	for (let i = birds.length - 1; i >= 0; i--)
 	{
@@ -38,17 +75,29 @@ function draw()
 			pipe.reset();
 			birds = [];
 			score = 0;
+			birdSpawn = 0;
+
+			image(game_over, width / 2 - game_over_width / 2, 150, game_over_width, game_over_height);
+
+			noLoop();
+			break;
 		}
 	}
-
-	fill(255);
-	textSize(16);
-	text("Score: " + score, 120, 30);
-	text("High Score: " + highScore, 120, 50);
 }
 
 function keyPressed()
 {
 	if (key == ' ')
-		pipe.lift();
+		action();
+}
+
+function mousePressed()
+{
+	action();
+}
+
+function action()
+{
+	pipe.lift();
+	loop();
 }
