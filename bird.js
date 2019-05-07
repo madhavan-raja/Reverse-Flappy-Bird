@@ -1,21 +1,29 @@
 function Bird()
 {
+    var graphics_up = loadImage("assets/bird_up.png");
+    var graphics_down = loadImage("assets/bird_down.png");
+    var graphics;
+
     this.x = width;
-    this.y = random(100, height - 50);
-    this.size = 30;
+    this.y = random(100, height - 200);
 
-    this.speed = 2;
-
-    this.show = function()
-    {
-        fill(230, 230, 0);
-        ellipse(this.x, this.y, this.size, this.size);
-    }
+    this.width = 42;
+    this.height = 30;
 
     this.update = function()
     {
-        this.x -= this.speed;
+        this.x += movementSpeed;
     }
+
+    this.show = function()
+    {
+        if ((int)(frameCount / 10) % 2 == 0)
+            graphics = graphics_up;
+        else
+            graphics = graphics_down;
+
+        image(graphics, this.x, this.y, this.width, this.height);
+    }    
 
     this.offscreen = function()
     {
@@ -24,8 +32,8 @@ function Bird()
 
     this.hits = function(pipe)
     {
-        if (this.x > pipe.x && this.x < pipe.x + pipe.thickness)
-            if (this.y < pipe.cutPos || this.y > pipe.cutPos + pipe.cutSize)
+        if (this.x < pipe.x + pipe.thickness && this.x + this.width > pipe.x)
+            if (this.y < pipe.cutPos || this.y + this.height > pipe.cutPos + pipe.cutSize)
                 return true;
 
         return false;
