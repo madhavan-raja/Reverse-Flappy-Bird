@@ -16,9 +16,12 @@ var game_over;
 let game_over_width = 425;
 let game_over_height = 50;
 
+let fontRegular;
+
 function preload()
 {
 	game_over = loadImage("assets/game_over.png");
+	fontRegular = loadFont("assets/04B_19.TTF");
 }
 
 function setup()
@@ -36,13 +39,14 @@ function draw()
 	image(backgroundImage, 0, 0);
 
 	fill(255);
+	textFont(fontRegular);
 	textSize(62);
 	textStyle(BOLD);
 	textAlign(CENTER);
 	text(score, width / 2, 100);
 	textStyle(NORMAL);
 	textSize(16);
-	text(highScore, width / 2, 130);
+	text("HI " + highScore, width / 2, 130);
 
 	ground.update();
 	ground.show();
