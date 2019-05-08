@@ -10,9 +10,13 @@ function Bird()
     this.width = 42;
     this.height = 30;
 
+    this.wiggle = 10;
+
     this.update = function()
     {
         this.x += movementSpeed;
+
+        this.y += sin(frameCount / this.wiggle) * 0.5;
     }
 
     this.show = function()
