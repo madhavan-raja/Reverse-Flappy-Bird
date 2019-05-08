@@ -13,8 +13,8 @@ let groundHeight = 80;
 let birdSpawn = 0;
 
 var game_over;
-let game_over_width = 425;
-let game_over_height = 50;
+let game_over_width = 400;
+let game_over_height = 200;
 
 let fontRegular;
 
@@ -81,7 +81,7 @@ function draw()
 			score = 0;
 			birdSpawn = 0;
 
-			image(game_over, width / 2 - game_over_width / 2, 150, game_over_width, game_over_height);
+			image(game_over, width / 2 - game_over_width / 2, height / 2- game_over_height / 2, game_over_width, game_over_height);
 
 			noLoop();
 			break;
