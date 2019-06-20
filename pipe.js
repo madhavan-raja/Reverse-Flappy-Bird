@@ -35,10 +35,7 @@ function Pipe()
         this.velocity += this.gravity;
         this.cutPos += this.velocity;
 
-        if (this.cutPos > (height - groundHeight) - (this.cutSize + this.endSize) - 1)
-            this.cutPos = (height - groundHeight) - (this.cutSize + this.endSize) - 1;
-        else if (this.cutPos < this.endSize + 1)
-            this.cutPos = this.endSize + 1;
+        this.cutPos = constrain(this.cutPos, this.endSize + 1, (height - groundHeight) - (this.cutSize + this.endSize) - 1);
     }
 
     this.lift = function()
