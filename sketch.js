@@ -96,7 +96,8 @@ function keyPressed()
 
 function mousePressed()
 {
-	action();
+	if (mouseButton == LEFT)
+		action();
 }
 
 function action()
