@@ -35,8 +35,7 @@ function setup()
 
 function draw()
 {
-	background(0);
-	image(backgroundImage, 0, 0);
+	background(backgroundImage);
 
 	fill(255);
 	textFont(fontRegular);
@@ -97,7 +96,8 @@ function keyPressed()
 
 function mousePressed()
 {
-	action();
+	if (mouseButton == LEFT)
+		action();
 }
 
 function action()
