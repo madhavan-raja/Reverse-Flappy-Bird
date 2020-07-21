@@ -26,7 +26,11 @@ function preload()
 
 function setup()
 {
-	createCanvas(480, 640);
+	var canvas = createCanvas(480, 640);
+	const x = (windowWidth - width) / 2;
+	const y = (windowHeight - height) / 2;
+	canvas.position(x, y);
+
 	backgroundImage = loadImage("assets/background.png");
 	ground = new Ground();
 
