@@ -1,6 +1,6 @@
 # Reverse Flappy Bird
 
-Flappy Bird, but you are the pipe and you have to avoid the birds.
+Flappy Bird, but you are the pipe and have to avoid the birds.
 
 Written in p5js using JavaScript.
  
