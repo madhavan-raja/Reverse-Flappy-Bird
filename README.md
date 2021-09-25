@@ -4,6 +4,6 @@ Flappy Bird, but you are the pipe and have to avoid the birds.
 
 Written in p5js using JavaScript.
  
-Live Demo: https://madhavan-raja.github.io/reverse-flappy-bird/ (boomers can respectfully copy and paste this link)
+Live Demo: https://madhavan-raja.github.io/reverse-flappy-bird/ (boomers can copy and paste this link)
 
 The Coding Train's p5.js Flappy Bird Clone: https://youtu.be/cXgA1d_E-jY
